@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+body {
+  background-color: white;
+  color: #00234B;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.btn-primary {
+  color: white;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  background-color: #624DE3;
+}
+
+.btn-primary:hover {
+  background-color: #4f3bc7;
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  border: 2px solid #624DE3;
+  color: #624DE3;
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: #624DE3;
+  color: white;
+}
+
+.job-card {
+  background-color: white;
+  border: 1px solid #E7E8F2;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.job-card:hover {
+  box-shadow: 0 12px 28px rgba(98, 77, 227, 0.1);
+  border-color: #624DE3;
+}
+
+.section-padding {
+  padding: 80px 24px;
+}
+
+.container-max {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+
+@layer components {
+  .container-max {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
