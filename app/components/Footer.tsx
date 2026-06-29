@@ -21,7 +21,7 @@ export default function Footer() {
                 RemoteExpert<span className="text-purple">Jobs</span>
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-gray-300 max-w-sm">
+            <p className="text-sm leading-relaxed text-gray-600 max-w-sm">
               RemoteExpertJobs helps skilled professionals find remote freelance jobs, 
               remote developer jobs, remote marketing jobs, GoHighLevel jobs, virtual 
               assistant jobs, and project-based opportunities with agencies and businesses.
@@ -45,33 +45,33 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-gray-600 text-sm uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="text-gray-300 hover:text-purple transition-colors">Home</a></li>
-              <li><a href="#openings" className="text-gray-300 hover:text-purple transition-colors">Current Openings</a></li>
-              <li><a href="#apply" className="text-gray-300 hover:text-purple transition-colors">Join Talent Network</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-purple transition-colors">Hire Remote Experts</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-purple transition-colors">Home</a></li>
+              <li><a href="#openings" className="text-gray-600 hover:text-purple transition-colors">Current Openings</a></li>
+              <li><a href="#apply" className="text-gray-600 hover:text-purple transition-colors">Join Talent Network</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-purple transition-colors">Hire Remote Experts</a></li>
             </ul>
           </div>
 
           {/* Resources */}
           <div>
-            <h4 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">Resources</h4>
+            <h4 className="font-semibold text-gray-600 text-sm uppercase tracking-wider mb-4">Resources</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="text-gray-300 hover:text-purple transition-colors">Remote Work Guides</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-purple transition-colors">Blog</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-purple transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-purple transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-purple transition-colors">Remote Work Guides</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-purple transition-colors">Blog</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-purple transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-purple transition-colors">Terms of Service</a></li>
             </ul>
           </div>
 
           {/* Contact & Newsletter */}
           <div>
-            <h4 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">Get In Touch</h4>
-            <p className="text-sm text-gray-300 mb-2">hello@remoteexpertjobs.com</p>
-            <p className="text-sm text-gray-300 mb-4">+1 (555) 123-4567</p>
+            <h4 className="font-semibold text-gray-600 text-sm uppercase tracking-wider mb-4">Get In Touch</h4>
+            <p className="text-sm text-gray-600 mb-2">hello@remoteexpertjobs.com</p>
+            <p className="text-sm text-gray-600 mb-4">+1 (555) 123-4567</p>
             <div className="mt-4">
-              <h5 className="text-sm font-medium text-white mb-2">Subscribe to Updates</h5>
+              <h5 className="text-sm font-medium text-gray-600 mb-2">Subscribe to Updates</h5>
               <div className="flex">
                 <input 
                   type="email" 
@@ -88,10 +88,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-700">
             © 2026 RemoteExpertJobs. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm text-gray-400">
+          <div className="flex items-center gap-6 text-sm text-gray-700">
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>
             <a href="#" className="hover:text-white transition-colors">Cookies</a>
