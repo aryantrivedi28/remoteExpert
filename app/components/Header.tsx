@@ -46,17 +46,21 @@ export default function Header() {
     <header 
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-[#E7E8F2]' 
-          : 'bg-white/90 backdrop-blur-sm border-b border-[#E7E8F2]'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+          : 'bg-white/90 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#F4F1FF] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-              <Briefcase className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-[#624DE3]" />
-            </div>
+            <Image 
+              src="/remoteExpertLogo.png" 
+              alt="Remote Expert Jobs logo" 
+              width={36} 
+              height={36} 
+              className="h-8 sm:h-9 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
             <span className="text-lg sm:text-xl font-extrabold text-[#00234B] tracking-tight">
               RemoteExpert<span className="text-[#624DE3]">Jobs</span>
             </span>
