@@ -11,7 +11,8 @@ import {
   Sparkles,
   Shield,
   Clock,
-  Star
+  Star,
+  ArrowRight
 } from 'lucide-react'
 
 const faqs = [
@@ -57,20 +58,20 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-soft-lavender">
+    <section id="faq" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-[#F4F1FF]">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
-          <div className="inline-flex items-center gap-2 bg-purple/10 text-purple px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-4">
-            <HelpCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-14">
+          <div className="inline-flex items-center gap-2 bg-white text-[#624DE3] px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 border border-[#E7E8F2]">
+            <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Got Questions?</span>
           </div>
           
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-navy">
-            Frequently Asked <span className="text-purple">Questions</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#00234B]">
+            Frequently Asked <span className="text-[#624DE3]">Questions</span>
           </h2>
           
-          <p className="text-sm sm:text-base text-gray-600 mt-3 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[#00234B]/70 mt-3 max-w-2xl mx-auto leading-relaxed">
             Find answers to the most common questions about joining our talent network 
             and working with RemoteExpertJobs.
           </p>
@@ -89,7 +90,7 @@ export default function FAQ() {
                   block: 'center' 
                 })
               }}
-              className="bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cool-gray hover:border-purple hover:bg-purple/5 transition-all duration-300 text-xs sm:text-sm font-medium text-gray-700 hover:text-navy"
+              className="bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E7E8F2] hover:border-[#624DE3] hover:bg-[#F4F1FF] transition-all duration-300 text-xs sm:text-sm font-medium text-[#00234B]/70 hover:text-[#624DE3]"
             >
               {link}
             </button>
@@ -106,28 +107,28 @@ export default function FAQ() {
               <div 
                 key={index} 
                 id={`faq-${index}`}
-                className="bg-white rounded-2xl border border-cool-gray hover:border-purple/30 transition-all duration-300 overflow-hidden"
+                className="bg-white rounded-2xl border border-[#E7E8F2] hover:border-[#624DE3]/30 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-lg hover:shadow-[#624DE3]/5"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-start gap-3 sm:gap-4 text-left focus:outline-none focus:ring-2 focus:ring-purple/20 rounded-2xl"
+                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-start gap-3 sm:gap-4 text-left focus:outline-none focus:ring-2 focus:ring-[#624DE3]/20 rounded-2xl"
                 >
                   {/* Icon */}
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-purple" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F4F1FF] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#624DE3]" />
                   </div>
                   
                   {/* Question */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-4">
-                      <p className="font-semibold text-sm sm:text-base text-navy pr-4">
+                      <p className="font-semibold text-sm sm:text-base text-[#00234B] pr-4">
                         {faq.question}
                       </p>
                       <div className="flex-shrink-0 mt-1">
                         {isOpen ? (
-                          <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple" />
+                          <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#624DE3]" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-purple" />
+                          <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-[#00234B]/40 group-hover:text-[#624DE3]" />
                         )}
                       </div>
                     </div>
@@ -140,8 +141,8 @@ export default function FAQ() {
                     isOpen ? 'max-h-96 pb-4 sm:pb-5' : 'max-h-0'
                   }`}
                 >
-                  <div className="pt-1 border-t border-cool-gray">
-                    <p className="text-sm sm:text-base text-gray-600 pt-3 sm:pt-4 leading-relaxed">
+                  <div className="pt-1 border-t border-[#E7E8F2]">
+                    <p className="text-sm sm:text-base text-[#00234B]/70 pt-3 sm:pt-4 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -152,24 +153,34 @@ export default function FAQ() {
         </div>
         
         {/* Still Have Questions */}
-        <div className="mt-8 sm:mt-10 md:mt-12 bg-white rounded-2xl p-6 sm:p-8 text-center border border-cool-gray">
+        <div className="mt-8 sm:mt-10 md:mt-12 bg-white rounded-2xl p-6 sm:p-8 text-center border border-[#E7E8F2] shadow-lg shadow-[#624DE3]/5">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple/10 flex items-center justify-center">
-                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-purple" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F4F1FF] flex items-center justify-center">
+                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#624DE3]" />
               </div>
               <div className="text-left">
-                <p className="font-semibold text-sm sm:text-base text-navy">Still have questions?</p>
-                <p className="text-xs sm:text-sm text-gray-500">We're here to help</p>
+                <p className="font-semibold text-sm sm:text-base text-[#00234B]">Still have questions?</p>
+                <p className="text-xs sm:text-sm text-[#00234B]/60">We're here to help</p>
               </div>
             </div>
             <a 
               href="mailto:hello@remoteexpertjobs.com"
-              className="inline-flex items-center gap-2 bg-purple text-white font-semibold px-5 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all duration-200 hover:bg-purple/90 text-sm sm:text-base"
+              className="group inline-flex items-center gap-2 bg-[#624DE3] text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl transition-all duration-300 hover:bg-[#624DE3]/90 hover:shadow-xl hover:shadow-[#624DE3]/25 hover:scale-[1.02] text-sm sm:text-base"
             >
               Contact Us
-              <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </a>
+          </div>
+        </div>
+
+        {/* Bottom Trust Badge */}
+        <div className="mt-6 flex justify-center">
+          <div className="inline-flex items-center gap-2 bg-white px-6 py-2.5 rounded-full border border-[#E7E8F2]">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#624DE3]" />
+            <span className="text-xs sm:text-sm text-[#00234B]/70">
+              <span className="font-medium text-[#00234B]">500+ experts</span> have already joined
+            </span>
           </div>
         </div>
       </div>

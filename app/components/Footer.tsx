@@ -1,16 +1,22 @@
 import Image from 'next/image'
 import { 
-  Globe,
+  Globe, 
   Mail, 
   Phone, 
   MapPin,
   Send,
-  ChevronRight
+  ChevronRight,
+  Briefcase,
+  Sparkles,
+  Users,
+  Shield,
+  ArrowRight,
+  Heart
 } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-[#00234B] text-white">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-12">
         {/* Top Section */}
@@ -19,52 +25,48 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <Image 
-                src="/remoteExpertLogo.png" 
-                alt="Remote Expert Jobs" 
-                width={40} 
-                height={40} 
-                className="h-8 sm:h-10 w-auto"
-              />
-              <span className="text-lg sm:text-xl font-bold text-white">
-                RemoteExpert<span className="text-purple">Jobs</span>
+              <div className="w-10 h-10 rounded-xl bg-[#624DE3]/20 flex items-center justify-center">
+                <Briefcase className="w-5 h-5 text-[#624DE3]" />
+              </div>
+              <span className="text-lg sm:text-xl font-extrabold text-white">
+                RemoteExpert<span className="text-[#624DE3]">Jobs</span>
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-gray-600 max-w-sm">
+            <p className="text-sm leading-relaxed text-white/60 max-w-sm">
               RemoteExpertJobs helps skilled professionals find remote freelance jobs, 
               remote developer jobs, remote marketing jobs, GoHighLevel jobs, virtual 
               assistant jobs, and project-based opportunities with agencies and businesses.
             </p>
             
-            {/* Social Icons with Lucide */}
-            {/* <div className="flex gap-3 mt-4">
+            {/* Social Icons */}
+            {/* <div className="flex gap-2.5 mt-4">
               <a 
                 href="#" 
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-purple transition-colors flex items-center justify-center text-gray-600 hover:text-white"
-                aria-label="Website"
-              >
-                <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </a>
-              <a 
-                href="#" 
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-purple transition-colors flex items-center justify-center text-gray-600 hover:text-white"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/5 hover:bg-[#624DE3] transition-all duration-300 hover:scale-110 flex items-center justify-center text-white/40 hover:text-white border border-white/10 hover:border-[#624DE3]"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </a>
               <a 
                 href="#" 
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-purple transition-colors flex items-center justify-center text-gray-600 hover:text-white"
-                aria-label="GitHub"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/5 hover:bg-[#624DE3] transition-all duration-300 hover:scale-110 flex items-center justify-center text-white/40 hover:text-white border border-white/10 hover:border-[#624DE3]"
+                aria-label="Twitter"
               >
-                <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <Twitter className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </a>
               <a 
                 href="#" 
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-purple transition-colors flex items-center justify-center text-gray-600 hover:text-white"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/5 hover:bg-[#624DE3] transition-all duration-300 hover:scale-110 flex items-center justify-center text-white/40 hover:text-white border border-white/10 hover:border-[#624DE3]"
                 aria-label="YouTube"
               >
                 <Youtube className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </a>
+              <a 
+                href="#" 
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white/5 hover:bg-[#624DE3] transition-all duration-300 hover:scale-110 flex items-center justify-center text-white/40 hover:text-white border border-white/10 hover:border-[#624DE3]"
+                aria-label="GitHub"
+              >
+                <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </a>
             </div> */}
           </div>
@@ -76,26 +78,26 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-sm">
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Home
                 </a>
               </li>
               <li>
-                <a href="#openings" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#openings" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Current Openings
                 </a>
               </li>
               <li>
-                <a href="#apply" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#apply" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Join Talent Network
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#companies" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Hire Remote Experts
                 </a>
               </li>
@@ -109,26 +111,26 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-sm">
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Remote Work Guides
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Blog
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple transition-colors inline-flex items-center gap-1">
-                  <ChevronRight className="w-3 h-3" />
+                <a href="#" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 inline-flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   Terms of Service
                 </a>
               </li>
@@ -143,16 +145,16 @@ export default function Footer() {
             
             {/* Contact Info with Icons */}
             <div className="space-y-2 text-sm">
-              <p className="text-gray-600 flex items-center gap-2">
-                <Mail className="w-4 h-4 text-purple flex-shrink-0" />
+              <a href="mailto:aryan@remoteexpertjobs.com" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 flex items-center gap-2 group">
+                <Mail className="w-4 h-4 text-[#624DE3] flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <span className="break-all">aryan@remoteexpertjobs.com</span>
-              </p>
-              <p className="text-gray-600 flex items-center gap-2">
-                <Phone className="w-4 h-4 text-purple flex-shrink-0" />
+              </a>
+              <a href="tel:+919893270210" className="text-white/60 hover:text-[#624DE3] transition-all duration-300 flex items-center gap-2 group">
+                <Phone className="w-4 h-4 text-[#624DE3] flex-shrink-0 group-hover:scale-110 transition-transform" />
                 +91 9893270210
-              </p>
-              <p className="text-gray-600 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-purple flex-shrink-0" />
+              </a>
+              <p className="text-white/60 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[#624DE3] flex-shrink-0" />
                 Remote - Global
               </p>
             </div>
@@ -160,32 +162,43 @@ export default function Footer() {
             {/* Newsletter */}
             <div className="mt-4">
               <h5 className="text-sm font-medium text-white mb-2">Subscribe to Updates</h5>
-              <div className="flex flex-col sm:flex-row">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input 
                   type="email" 
                   placeholder="Your email" 
-                  className="flex-1 px-3 sm:px-4 py-2 text-sm rounded-lg sm:rounded-l-lg sm:rounded-r-none bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-purple w-full"
+                  className="flex-1 px-3 sm:px-4 py-2.5 text-sm rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-[#624DE3] focus:ring-2 focus:ring-[#624DE3]/20 transition-all duration-300 w-full"
                 />
-                <button className="px-3 sm:px-4 py-2 bg-purple text-black text-sm font-medium rounded-lg sm:rounded-r-lg sm:rounded-l-none hover:bg-purple/80 transition-colors mt-2 sm:mt-0 inline-flex items-center justify-center gap-1">
+                <button className="px-4 sm:px-5 py-2.5 bg-[#624DE3] text-white text-sm font-semibold rounded-xl hover:bg-[#624DE3]/90 hover:shadow-lg hover:shadow-[#624DE3]/25 transition-all duration-300 inline-flex items-center justify-center gap-2 group whitespace-nowrap">
                   Subscribe
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
+              <p className="text-xs text-white/40 mt-2 flex items-center gap-1">
+                <Shield className="w-3 h-3" />
+                No spam, unsubscribe anytime
+              </p>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 sm:pt-8">
-          <p className="text-xs sm:text-sm text-gray-800 text-center sm:text-left">
-            © 2026 RemoteExpertJobs. All rights reserved.
+          <p className="text-xs sm:text-sm text-white/40 text-center sm:text-left flex items-center gap-1.5">
+            © 2026 RemoteExpertJobs. Made with 
+            <Heart className="w-3 h-3 text-[#624DE3] fill-[#624DE3]" />
+            for remote workers
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-800">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <span className="text-gray-600 hidden sm:inline">|</span>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <span className="text-gray-600 hidden sm:inline">|</span>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm">
+            <a href="#" className="text-white/40 hover:text-[#624DE3] transition-all duration-300">Privacy</a>
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <a href="#" className="text-white/40 hover:text-[#624DE3] transition-all duration-300">Terms</a>
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <a href="#" className="text-white/40 hover:text-[#624DE3] transition-all duration-300">Cookies</a>
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <a href="#" className="text-white/40 hover:text-[#624DE3] transition-all duration-300 flex items-center gap-1">
+              <Globe className="w-3 h-3" />
+              Global
+            </a>
           </div>
         </div>
       </div>
