@@ -45,22 +45,58 @@ export default function ApplicationForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('/api/apply', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit application')
+      }
+
       setIsSuccess(true)
-      console.log('Form data:', formData)
-      
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        whatsapp: '',
+        country: '',
+        primarySkill: '',
+        secondarySkills: '',
+        experience: '',
+        portfolio: '',
+        linkedin: '',
+        hourlyRate: '',
+        workType: 'freelance',
+        tools: '',
+        intro: '',
+        consent: false
+      })
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setIsSuccess(false)
       }, 5000)
-    }, 1500)
+
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -305,6 +341,13 @@ export default function ApplicationForm() {
                 I agree to be contacted for relevant freelance opportunities. Your information will be kept confidential and used only for matching purposes.
               </label>
             </div>
+            
+            {/* Error Message */}
+            {errorMessage && (
+              <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center">
+                <p className="text-sm text-red-600">{errorMessage}</p>
+              </div>
+            )}
             
             {/* Submit Button */}
             <button 
