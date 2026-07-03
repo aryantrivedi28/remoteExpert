@@ -62,7 +62,7 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
-              href="#openings" 
+              href="/openings" 
               className="group bg-white text-[#624DE3] font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:bg-[#624DE3] hover:text-white hover:shadow-xl hover:shadow-[#624DE3]/15 text-sm sm:text-base text-center inline-flex items-center justify-center gap-2 border-2 border-[#E7E8F2] hover:border-[#624DE3]"
             >
               <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
