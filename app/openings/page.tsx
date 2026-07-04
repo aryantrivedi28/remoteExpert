@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import {
   Briefcase,
@@ -31,236 +31,179 @@ import {
   Zap,
   Star,
   TrendingUp,
-  UserPlus
+  Loader2,
+  AlertCircle
 } from 'lucide-react'
 
-const openings = [
-  {
-    id: 1,
-    title: 'GoHighLevel Developer',
-    type: 'Freelance / Project-Based',
-    location: 'Remote',
-    department: 'Development',
-    description: 'Build funnels, websites, workflows, forms, calendars, automations, and CRM systems inside GoHighLevel. You will work with agencies and businesses to implement complex marketing automation systems.',
-    icon: Code2,
-    tags: ['GHL', 'CRM', 'Automation', 'Web Development'],
-    salary: '$50-80/hr',
-    experience: '3+ years',
-    posted: '2 days ago',
-    applications: 23,
-    featured: true,
-    urgent: true,
-    company: 'RemoteExpertJobs',
-    requirements: [
-      '3+ years of experience with GoHighLevel',
-      'Strong understanding of CRM and automation',
-      'Experience with funnel building and landing pages',
-      'Good communication skills',
-      'Portfolio of previous GHL projects'
-    ],
-    responsibilities: [
-      'Build custom funnels and landing pages',
-      'Set up automation workflows',
-      'Configure CRM systems',
-      'Integrate third-party tools',
-      'Optimize conversion rates'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Funnel & Landing Page Designer',
-    type: 'Project-Based',
-    location: 'Remote',
-    department: 'Design',
-    description: 'Design high-converting landing pages, funnels, and website pages for service businesses and agencies. Create visually stunning designs that drive conversions.',
-    icon: Palette,
-    tags: ['Design', 'Funnels', 'UI/UX', 'Webflow'],
-    salary: '$40-70/hr',
-    experience: '2+ years',
-    posted: '3 days ago',
-    applications: 18,
-    featured: false,
-    urgent: false,
-    company: 'RemoteExpertJobs',
-    requirements: [
-      '2+ years of design experience',
-      'Strong portfolio of landing pages',
-      'Experience with Webflow or similar tools',
-      'Understanding of conversion principles',
-      'Excellent visual design skills'
-    ],
-    responsibilities: [
-      'Design high-converting landing pages',
-      'Create sales funnels',
-      'Develop visual brand identities',
-      'Optimize designs for conversions',
-      'Collaborate with marketing teams'
-    ]
-  },
-  {
-    id: 3,
-    title: 'CRM & Automation Specialist',
-    type: 'Freelance',
-    location: 'Remote',
-    department: 'Operations',
-    description: 'Set up workflows, lead routing, pipeline automations, email/SMS flows, and client CRM systems. Help businesses streamline their operations through automation.',
-    icon: Settings,
-    tags: ['CRM', 'Automation', 'Workflows', 'Zapier'],
-    salary: '$45-75/hr',
-    experience: '4+ years',
-    posted: '1 day ago',
-    applications: 31,
-    featured: true,
-    urgent: true,
-    company: 'RemoteExpertJobs',
-    requirements: [
-      '4+ years of CRM experience',
-      'Expertise in automation tools',
-      'Experience with lead routing',
-      'Strong problem-solving skills',
-      'Knowledge of various CRMs'
-    ],
-    responsibilities: [
-      'Set up CRM workflows',
-      'Configure lead routing',
-      'Build automation sequences',
-      'Create email/SMS flows',
-      'Optimize pipeline processes'
-    ]
-  },
-  {
-    id: 4,
-    title: 'SEO Content Writer',
-    type: 'Freelance',
-    location: 'Remote',
-    department: 'Content',
-    description: 'Write SEO-friendly blogs, landing pages, service pages, and niche content for agency websites. Create content that ranks well and engages readers.',
-    icon: PenTool,
-    tags: ['SEO', 'Content Writing', 'Blogging', 'Copywriting'],
-    salary: '$30-50/hr',
-    experience: '2+ years',
-    posted: '5 days ago',
-    applications: 15,
-    featured: false,
-    urgent: false,
-    company: 'RemoteExpertJobs',
-    requirements: [
-      '2+ years of content writing experience',
-      'Strong SEO knowledge',
-      'Excellent writing skills',
-      'Portfolio of published work',
-      'Understanding of content strategy'
-    ],
-    responsibilities: [
-      'Write SEO-optimized blog posts',
-      'Create landing page content',
-      'Develop service page copy',
-      'Research industry topics',
-      'Optimize existing content'
-    ]
-  },
-  {
-    id: 5,
-    title: 'Remote Project Manager',
-    type: 'Part-Time / Freelance',
-    location: 'Remote',
-    department: 'Management',
-    description: 'Manage client communication, task tracking, documentation, deadlines, and project delivery. Coordinate between teams and ensure project success.',
-    icon: Users,
-    tags: ['Management', 'Communication', 'Delivery', 'Agile'],
-    salary: '$40-65/hr',
-    experience: '5+ years',
-    posted: '4 days ago',
-    applications: 27,
-    featured: false,
-    urgent: false,
-    company: 'RemoteExpertJobs',
-    requirements: [
-      '5+ years of project management experience',
-      'Strong communication skills',
-      'Experience with Agile methodologies',
-      'Track record of successful delivery',
-      'Experience with remote teams'
-    ],
-    responsibilities: [
-      'Manage client relationships',
-      'Track project tasks and milestones',
-      'Handle documentation',
-      'Coordinate team members',
-      'Ensure timely delivery'
-    ]
-  },
-  {
-    id: 6,
-    title: 'Digital Marketing Specialist',
-    type: 'Freelance',
-    location: 'Remote',
-    department: 'Marketing',
-    description: 'Manage social media, content strategy, paid advertising, and digital marketing campaigns for agencies and businesses.',
-    icon: TrendingUp,
-    tags: ['Marketing', 'Social Media', 'Strategy', 'Analytics'],
-    salary: '$35-60/hr',
-    experience: '3+ years',
-    posted: '6 days ago',
-    applications: 12,
-    featured: false,
-    urgent: false,
-    company: 'RemoteExpertJobs',
-    requirements: [
-      '3+ years of digital marketing experience',
-      'Experience with social media management',
-      'Knowledge of content strategy',
-      'Understanding of analytics',
-      'Campaign management experience'
-    ],
-    responsibilities: [
-      'Manage social media channels',
-      'Develop content strategies',
-      'Run paid advertising campaigns',
-      'Analyze campaign performance',
-      'Create marketing reports'
-    ]
-  }
-]
+// Type for form data from Google Sheet
+interface FormData {
+  title: string
+  category: string
+  url: string
+  status: string
+  createdDate?: string
+  description?: string
+  company?: string
+  location?: string
+  salary?: string
+  type?: string
+  experience?: string
+  tags?: string
+}
 
-const departments = [
-  'All Departments',
-  'Development',
-  'Design',
-  'Operations',
-  'Content',
-  'Management',
-  'Marketing'
-]
-
-const jobTypes = [
-  'All Types',
-  'Freelance / Project-Based',
-  'Project-Based',
-  'Freelance',
-  'Part-Time / Freelance'
-]
+// Map categories to icons and colors
+const categoryMap: Record<string, { icon: any; color: string; bgColor: string }> = {
+  'Developer': { icon: Code2, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' },
+  'Designer': { icon: Palette, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' },
+  'Marketing': { icon: TrendingUp, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' },
+  'Operations': { icon: Settings, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' },
+  'Content': { icon: PenTool, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' },
+  'Management': { icon: Users, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' },
+  'default': { icon: Briefcase, color: 'text-[#624DE3]', bgColor: 'bg-[#F4F1FF]' }
+}
 
 export default function OpeningsPage() {
+  const [forms, setForms] = useState<FormData[]>([])
+  const [filteredForms, setFilteredForms] = useState<FormData[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedDepartment, setSelectedDepartment] = useState('All Departments')
-  const [selectedType, setSelectedType] = useState('All Types')
+  const [selectedCategory, setSelectedCategory] = useState('All Categories')
+  const [selectedStatus, setSelectedStatus] = useState('Active')
   const [showFilters, setShowFilters] = useState(false)
-  const [selectedJob, setSelectedJob] = useState<typeof openings[0] | null>(null)
+  const [selectedForm, setSelectedForm] = useState<FormData | null>(null)
 
-  const filteredOpenings = openings.filter(opening => {
-    const matchesSearch = opening.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          opening.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          opening.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    
-    const matchesDepartment = selectedDepartment === 'All Departments' || 
-                             opening.department === selectedDepartment
-    
-    const matchesType = selectedType === 'All Types' || 
-                       opening.type === selectedType
-    
-    return matchesSearch && matchesDepartment && matchesType
-  })
+  // Fetch forms from API
+  useEffect(() => {
+    const fetchForms = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+        
+        const response = await fetch('/api/forms', {
+          cache: 'no-store'
+        })
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch forms: ${response.status}`)
+        }
+        
+        const data = await response.json()
+        
+        // Ensure data is an array
+        const formsArray = Array.isArray(data) ? data : []
+        setForms(formsArray)
+        setFilteredForms(formsArray)
+      } catch (err) {
+        console.error('Error fetching forms:', err)
+        setError(err instanceof Error ? err.message : 'Failed to load openings')
+        setForms([])
+        setFilteredForms([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchForms()
+  }, [])
+
+  // Filter forms based on search, category, and status
+  useEffect(() => {
+    let filtered = forms
+
+    // Filter by status
+    if (selectedStatus !== 'All') {
+      filtered = filtered.filter(form => 
+        form.status?.toLowerCase() === selectedStatus.toLowerCase()
+      )
+    }
+
+    // Filter by category
+    if (selectedCategory !== 'All Categories') {
+      filtered = filtered.filter(form => 
+        form.category?.toLowerCase() === selectedCategory.toLowerCase()
+      )
+    }
+
+    // Filter by search term
+    if (searchTerm.trim()) {
+      const term = searchTerm.toLowerCase()
+      filtered = filtered.filter(form =>
+        form.title?.toLowerCase().includes(term) ||
+        form.category?.toLowerCase().includes(term) ||
+        form.description?.toLowerCase().includes(term) ||
+        form.tags?.toLowerCase().includes(term)
+      )
+    }
+
+    setFilteredForms(filtered)
+  }, [searchTerm, selectedCategory, selectedStatus, forms])
+
+  // Get unique categories for filter
+  const categories = ['All Categories', ...new Set(forms.map(form => form.category).filter(Boolean))]
+
+  // Get unique statuses for filter
+  const statuses = ['All', ...new Set(forms.map(form => form.status).filter(Boolean))]
+
+  // Get icon for category
+  const getCategoryIcon = (category: string) => {
+    return categoryMap[category || 'default'] || categoryMap['default']
+  }
+
+  // Format date
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return 'Recently'
+    try {
+      const date = new Date(dateString)
+      const now = new Date()
+      const diffTime = Math.abs(now.getTime() - date.getTime())
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+      
+      if (diffDays === 0) return 'Today'
+      if (diffDays === 1) return 'Yesterday'
+      if (diffDays < 7) return `${diffDays} days ago`
+      if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`
+      if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`
+      return `${Math.floor(diffDays / 365)} years ago`
+    } catch {
+      return 'Recently'
+    }
+  }
+
+  // Parse tags from string to array
+  const parseTags = (tagsString?: string) => {
+    if (!tagsString) return []
+    return tagsString.split(',').map(tag => tag.trim()).filter(Boolean)
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-[#624DE3] animate-spin mx-auto mb-4" />
+          <p className="text-[#00234B]/60">Loading openings...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold text-[#00234B] mb-2">Unable to load openings</h3>
+          <p className="text-[#00234B]/60 mb-4">{error}</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="bg-[#624DE3] text-white font-semibold px-6 py-2 rounded-xl hover:bg-[#624DE3]/90 transition-all duration-300"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -284,13 +227,15 @@ export default function OpeningsPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-8 max-w-3xl mx-auto">
             <div className="bg-white p-4 rounded-xl text-center border border-[#E7E8F2] hover:border-[#624DE3] transition-all duration-300 hover:shadow-lg hover:shadow-[#624DE3]/10">
               <Briefcase className="w-5 h-5 text-[#624DE3] mx-auto mb-1" />
-              <p className="text-xl font-extrabold text-[#00234B]">{openings.length}+</p>
+              <p className="text-xl font-extrabold text-[#00234B]">{forms.length}+</p>
               <p className="text-xs text-[#00234B]/60">Open Positions</p>
             </div>
             <div className="bg-white p-4 rounded-xl text-center border border-[#E7E8F2] hover:border-[#624DE3] transition-all duration-300 hover:shadow-lg hover:shadow-[#624DE3]/10">
               <Building2 className="w-5 h-5 text-[#624DE3] mx-auto mb-1" />
-              <p className="text-xl font-extrabold text-[#00234B]">500+</p>
-              <p className="text-xs text-[#00234B]/60">Companies Hiring</p>
+              <p className="text-xl font-extrabold text-[#00234B]">
+                {new Set(forms.map(f => f.category)).size}
+              </p>
+              <p className="text-xs text-[#00234B]/60">Categories</p>
             </div>
             <div className="bg-white p-4 rounded-xl text-center border border-[#E7E8F2] hover:border-[#624DE3] transition-all duration-300 hover:shadow-lg hover:shadow-[#624DE3]/10">
               <Globe className="w-5 h-5 text-[#624DE3] mx-auto mb-1" />
@@ -315,35 +260,35 @@ export default function OpeningsPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#00234B]/40" />
               <input
                 type="text"
-                placeholder="Search by title, description, or skills..."
+                placeholder="Search by title, category, or skills..."
                 className="w-full rounded-xl border border-[#E7E8F2] pl-9 pr-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#624DE3]/20 focus:border-[#624DE3] transition-all text-sm text-[#00234B] placeholder:text-[#00234B]/40"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
 
-            {/* Department Filter */}
+            {/* Category Filter - Desktop */}
             <div className="hidden md:flex items-center gap-2">
               <select
                 className="rounded-xl border border-[#E7E8F2] px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#624DE3]/20 focus:border-[#624DE3] transition-all text-sm text-[#00234B]"
-                value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
               >
-                {departments.map((dept) => (
-                  <option key={dept} value={dept}>{dept}</option>
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
             </div>
 
-            {/* Type Filter */}
+            {/* Status Filter - Desktop */}
             <div className="hidden md:flex items-center gap-2">
               <select
                 className="rounded-xl border border-[#E7E8F2] px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-[#624DE3]/20 focus:border-[#624DE3] transition-all text-sm text-[#00234B]"
-                value={selectedType}
-                onChange={(e) => setSelectedType(e.target.value)}
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
               >
-                {jobTypes.map((type) => (
-                  <option key={type} value={type}>{type}</option>
+                {statuses.map((status) => (
+                  <option key={status} value={status}>{status}</option>
                 ))}
               </select>
             </div>
@@ -363,26 +308,26 @@ export default function OpeningsPage() {
           {showFilters && (
             <div className="md:hidden mt-4 p-4 bg-[#F4F1FF] rounded-xl border border-[#E7E8F2] space-y-3">
               <div>
-                <label className="text-xs font-medium text-[#00234B] mb-1 block">Department</label>
+                <label className="text-xs font-medium text-[#00234B] mb-1 block">Category</label>
                 <select
                   className="w-full rounded-xl border border-[#E7E8F2] px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#624DE3]/20 focus:border-[#624DE3] transition-all text-sm text-[#00234B]"
-                  value={selectedDepartment}
-                  onChange={(e) => setSelectedDepartment(e.target.value)}
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                  {departments.map((dept) => (
-                    <option key={dept} value={dept}>{dept}</option>
+                  {categories.map((cat) => (
+                    <option key={cat} value={cat}>{cat}</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="text-xs font-medium text-[#00234B] mb-1 block">Job Type</label>
+                <label className="text-xs font-medium text-[#00234B] mb-1 block">Status</label>
                 <select
                   className="w-full rounded-xl border border-[#E7E8F2] px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#624DE3]/20 focus:border-[#624DE3] transition-all text-sm text-[#00234B]"
-                  value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value)}
+                  value={selectedStatus}
+                  onChange={(e) => setSelectedStatus(e.target.value)}
                 >
-                  {jobTypes.map((type) => (
-                    <option key={type} value={type}>{type}</option>
+                  {statuses.map((status) => (
+                    <option key={status} value={status}>{status}</option>
                   ))}
                 </select>
               </div>
@@ -397,11 +342,11 @@ export default function OpeningsPage() {
           {/* Results Count */}
           <div className="flex justify-between items-center mb-6">
             <p className="text-sm text-[#00234B]/60">
-              Showing <span className="font-semibold text-[#00234B]">{filteredOpenings.length}</span> positions
+              Showing <span className="font-semibold text-[#00234B]">{filteredForms.length}</span> positions
             </p>
           </div>
 
-          {filteredOpenings.length === 0 ? (
+          {filteredForms.length === 0 ? (
             <div className="text-center py-16">
               <Briefcase className="w-16 h-16 text-[#00234B]/20 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-[#00234B]">No positions found</h3>
@@ -409,27 +354,26 @@ export default function OpeningsPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {filteredOpenings.map((opening) => {
-                const Icon = opening.icon
+              {filteredForms.map((form, index) => {
+                const categoryInfo = getCategoryIcon(form.category)
+                const Icon = categoryInfo.icon
+                const tags = parseTags(form.tags)
+                
                 return (
                   <div 
-                    key={opening.id}
+                    key={index}
                     className="group bg-white p-6 rounded-2xl border border-[#E7E8F2] hover:border-[#624DE3] transition-all duration-300 hover:shadow-2xl hover:shadow-[#624DE3]/10 hover:-translate-y-0.5 relative"
                   >
-                    {/* Badges */}
+                    {/* Status Badge */}
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {opening.featured && (
-                        <span className="bg-gradient-to-r from-[#624DE3] to-[#624DE3]/80 text-white text-[10px] font-bold px-3 py-0.5 rounded-full">
-                          Featured
-                        </span>
-                      )}
-                      {opening.urgent && (
-                        <span className="bg-red-500 text-white text-[10px] font-bold px-3 py-0.5 rounded-full">
-                          Urgent
-                        </span>
-                      )}
-                      <span className="bg-[#F4F1FF] text-[#624DE3] text-[10px] font-medium px-3 py-0.5 rounded-full border border-[#E7E8F2]">
-                        {opening.type}
+                      <span className={`text-[10px] font-bold px-3 py-0.5 rounded-full ${
+                        form.status?.toLowerCase() === 'active' 
+                          ? 'bg-green-500 text-white' 
+                          : form.status?.toLowerCase() === 'urgent' 
+                          ? 'bg-red-500 text-white'
+                          : 'bg-gray-500 text-white'
+                      }`}>
+                        {form.status || 'Active'}
                       </span>
                     </div>
 
@@ -444,65 +388,75 @@ export default function OpeningsPage() {
                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                           <div>
                             <h3 className="text-lg font-bold text-[#00234B] group-hover:text-[#624DE3] transition-colors">
-                              {opening.title}
+                              {form.title}
                             </h3>
-                            <p className="text-sm text-[#00234B]/60">{opening.company}</p>
+                            <p className="text-sm text-[#624DE3] font-medium">{form.category}</p>
                           </div>
                           <div className="flex items-center gap-4 text-sm text-[#00234B]/60 whitespace-nowrap">
                             <span className="flex items-center gap-1">
                               <MapPin className="w-3.5 h-3.5 text-[#624DE3]" />
-                              {opening.location}
+                              {form.location || 'Remote'}
                             </span>
                             <span className="flex items-center gap-1">
-                              <DollarSign className="w-3.5 h-3.5 text-[#624DE3]" />
-                              {opening.salary}
+                              <Clock className="w-3.5 h-3.5 text-[#624DE3]" />
+                              {formatDate(form.createdDate)}
                             </span>
                           </div>
                         </div>
 
                         <p className="text-sm text-[#00234B]/70 mt-2 line-clamp-2 leading-relaxed">
-                          {opening.description}
+                          {form.description || `Apply for the ${form.title} position. Join our talent network and start your remote journey.`}
                         </p>
 
                         {/* Tags */}
-                        <div className="flex flex-wrap gap-1.5 mt-3">
-                          {opening.tags.map((tag, idx) => (
-                            <span 
-                              key={idx}
-                              className="text-[10px] bg-[#F4F1FF] text-[#624DE3] px-2 py-0.5 rounded-full font-medium border border-[#E7E8F2]"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
+                        {tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 mt-3">
+                            {tags.map((tag, idx) => (
+                              <span 
+                                key={idx}
+                                className="text-[10px] bg-[#F4F1FF] text-[#624DE3] px-2 py-0.5 rounded-full font-medium border border-[#E7E8F2]"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
                         {/* Meta Info */}
                         <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-[#00234B]/60">
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-3 h-3 text-[#624DE3]" />
-                            Posted {opening.posted}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Users className="w-3 h-3 text-[#624DE3]" />
-                            {opening.applications} applications
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Award className="w-3 h-3 text-[#624DE3]" />
-                            {opening.experience}
-                          </span>
+                          {form.salary && (
+                            <span className="flex items-center gap-1">
+                              <DollarSign className="w-3 h-3 text-[#624DE3]" />
+                              {form.salary}
+                            </span>
+                          )}
+                          {form.experience && (
+                            <span className="flex items-center gap-1">
+                              <Award className="w-3 h-3 text-[#624DE3]" />
+                              {form.experience}
+                            </span>
+                          )}
+                          {form.company && (
+                            <span className="flex items-center gap-1">
+                              <Building2 className="w-3 h-3 text-[#624DE3]" />
+                              {form.company}
+                            </span>
+                          )}
                         </div>
                       </div>
 
                       {/* Action Buttons */}
                       <div className="flex flex-col sm:flex-row gap-2 lg:flex-col flex-shrink-0">
-                        <Link
-                          href={`/openings/${opening.id}`}
+                        <a
+                          href={form.url || '#apply'}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="bg-[#624DE3] text-white text-sm font-semibold px-6 py-2 rounded-xl transition-all duration-300 hover:bg-[#624DE3]/90 hover:shadow-lg hover:shadow-[#624DE3]/25 text-center whitespace-nowrap"
                         >
                           Apply Now
-                        </Link>
+                        </a>
                         <button 
-                          onClick={() => setSelectedJob(opening)}
+                          onClick={() => setSelectedForm(form)}
                           className="bg-white text-[#624DE3] text-sm font-semibold px-6 py-2 rounded-xl transition-all duration-300 hover:bg-[#F4F1FF] border border-[#E7E8F2] hover:border-[#624DE3] text-center whitespace-nowrap"
                         >
                           <Eye className="w-4 h-4 inline mr-1" />
@@ -513,16 +467,6 @@ export default function OpeningsPage() {
                   </div>
                 )
               })}
-            </div>
-          )}
-
-          {/* Load More */}
-          {filteredOpenings.length > 0 && (
-            <div className="text-center mt-10">
-              <button className="bg-white text-[#624DE3] font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-[#F4F1FF] border-2 border-[#E7E8F2] hover:border-[#624DE3] text-sm inline-flex items-center gap-2">
-                Load More Openings
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           )}
         </div>
@@ -549,7 +493,7 @@ export default function OpeningsPage() {
               href="#apply" 
               className="group bg-[#624DE3] text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-[#624DE3]/90 hover:shadow-xl hover:shadow-[#624DE3]/25 hover:scale-[1.02] text-sm inline-flex items-center gap-2"
             >
-              <UserPlus className="w-4 h-4" />
+              <User className="w-4 h-4" />
               Join Talent Network
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -565,21 +509,25 @@ export default function OpeningsPage() {
       </section>
 
       {/* Job Detail Modal */}
-      {selectedJob && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedJob(null)}>
+      {selectedForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedForm(null)}>
           <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 border border-[#E7E8F2] shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-start mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-xl bg-[#F4F1FF] flex items-center justify-center">
-                  <selectedJob.icon className="w-6 h-6 text-[#624DE3]" />
+                  {(() => {
+                    const categoryInfo = getCategoryIcon(selectedForm.category)
+                    const Icon = categoryInfo.icon
+                    return <Icon className="w-6 h-6 text-[#624DE3]" />
+                  })()}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#00234B]">{selectedJob.title}</h3>
-                  <p className="text-sm text-[#00234B]/60">{selectedJob.company}</p>
+                  <h3 className="text-xl font-bold text-[#00234B]">{selectedForm.title}</h3>
+                  <p className="text-sm text-[#624DE3] font-medium">{selectedForm.category}</p>
                 </div>
               </div>
               <button 
-                onClick={() => setSelectedJob(null)}
+                onClick={() => setSelectedForm(null)}
                 className="p-2 hover:bg-[#F4F1FF] rounded-xl transition-colors"
               >
                 <X className="w-5 h-5 text-[#00234B]/60" />
@@ -587,52 +535,85 @@ export default function OpeningsPage() {
             </div>
 
             <div className="flex flex-wrap gap-3 mb-4 text-sm">
-              <span className="flex items-center gap-1 text-[#00234B]/60">
-                <MapPin className="w-4 h-4 text-[#624DE3]" />
-                {selectedJob.location}
-              </span>
-              <span className="flex items-center gap-1 text-[#00234B]/60">
-                <DollarSign className="w-4 h-4 text-[#624DE3]" />
-                {selectedJob.salary}
-              </span>
-              <span className="flex items-center gap-1 text-[#00234B]/60">
-                <Clock className="w-4 h-4 text-[#624DE3]" />
-                {selectedJob.posted}
-              </span>
-              <span className="flex items-center gap-1 text-[#00234B]/60">
-                <Users className="w-4 h-4 text-[#624DE3]" />
-                {selectedJob.applications} applications
-              </span>
+              {selectedForm.location && (
+                <span className="flex items-center gap-1 text-[#00234B]/60">
+                  <MapPin className="w-4 h-4 text-[#624DE3]" />
+                  {selectedForm.location}
+                </span>
+              )}
+              {selectedForm.salary && (
+                <span className="flex items-center gap-1 text-[#00234B]/60">
+                  <DollarSign className="w-4 h-4 text-[#624DE3]" />
+                  {selectedForm.salary}
+                </span>
+              )}
+              {selectedForm.createdDate && (
+                <span className="flex items-center gap-1 text-[#00234B]/60">
+                  <Clock className="w-4 h-4 text-[#624DE3]" />
+                  {formatDate(selectedForm.createdDate)}
+                </span>
+              )}
+              {selectedForm.status && (
+                <span className={`text-xs font-bold px-3 py-0.5 rounded-full ${
+                  selectedForm.status.toLowerCase() === 'active' 
+                    ? 'bg-green-100 text-green-700' 
+                    : selectedForm.status.toLowerCase() === 'urgent' 
+                    ? 'bg-red-100 text-red-700'
+                    : 'bg-gray-100 text-gray-700'
+                }`}>
+                  {selectedForm.status}
+                </span>
+              )}
             </div>
 
             <div className="prose prose-sm max-w-none">
               <h4 className="font-semibold text-[#00234B]">Description</h4>
-              <p className="text-[#00234B]/70">{selectedJob.description}</p>
+              <p className="text-[#00234B]/70">
+                {selectedForm.description || `Join us as a ${selectedForm.title} and be part of our growing team. This is a great opportunity to work with exciting projects and clients.`}
+              </p>
 
-              <h4 className="font-semibold text-[#00234B] mt-4">Requirements</h4>
-              <ul className="list-disc pl-5 text-[#00234B]/70 space-y-1">
-                {selectedJob.requirements.map((req, idx) => (
-                  <li key={idx}>{req}</li>
-                ))}
-              </ul>
+              {selectedForm.company && (
+                <>
+                  <h4 className="font-semibold text-[#00234B] mt-4">Company</h4>
+                  <p className="text-[#00234B]/70">{selectedForm.company}</p>
+                </>
+              )}
 
-              <h4 className="font-semibold text-[#00234B] mt-4">Responsibilities</h4>
-              <ul className="list-disc pl-5 text-[#00234B]/70 space-y-1">
-                {selectedJob.responsibilities.map((resp, idx) => (
-                  <li key={idx}>{resp}</li>
-                ))}
-              </ul>
+              {selectedForm.experience && (
+                <>
+                  <h4 className="font-semibold text-[#00234B] mt-4">Experience Required</h4>
+                  <p className="text-[#00234B]/70">{selectedForm.experience}</p>
+                </>
+              )}
+
+              {selectedForm.tags && (
+                <>
+                  <h4 className="font-semibold text-[#00234B] mt-4">Skills</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {parseTags(selectedForm.tags).map((tag, idx) => (
+                      <span 
+                        key={idx}
+                        className="text-xs bg-[#F4F1FF] text-[#624DE3] px-3 py-1 rounded-full font-medium border border-[#E7E8F2]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="mt-6 pt-6 border-t border-[#E7E8F2] flex flex-col sm:flex-row gap-3">
-              <Link
-                href={`/openings/${selectedJob.id}`}
+              <a
+                href={selectedForm.url || '#apply'}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 bg-[#624DE3] text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:bg-[#624DE3]/90 hover:shadow-lg hover:shadow-[#624DE3]/25 text-center"
               >
                 Apply Now
-              </Link>
+              </a>
               <button 
-                onClick={() => setSelectedJob(null)}
+                onClick={() => setSelectedForm(null)}
                 className="flex-1 bg-white text-[#624DE3] font-semibold py-3 rounded-xl transition-all duration-300 hover:bg-[#F4F1FF] border border-[#E7E8F2] hover:border-[#624DE3]"
               >
                 Close
