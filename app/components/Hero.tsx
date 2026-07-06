@@ -71,7 +71,7 @@ export default function Hero() {
           </div>
           
           {/* Join Us Button */}
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <a 
               href="#join" 
               className="group inline-flex items-center gap-2.5 bg-[#75E8F0] text-[#00234B] font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:bg-[#75E8F0]/80 hover:shadow-xl hover:shadow-[#75E8F0]/30 hover:scale-[1.02] text-sm sm:text-base shadow-lg shadow-[#75E8F0]/20"
@@ -80,7 +80,7 @@ export default function Hero() {
               Join Us Today
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-          </div>
+          </div> */}
           
           {/* Trust Message */}
           <div className="flex items-start gap-2.5 mt-6">

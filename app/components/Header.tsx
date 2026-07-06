@@ -87,7 +87,7 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a 
-              href="/talent-network" 
+              href="#talent-network" 
               className="group bg-[#624DE3] text-white font-semibold px-6 py-2.5 rounded-xl transition-all duration-300 hover:bg-[#624DE3]/90 hover:shadow-xl hover:shadow-[#624DE3]/25 hover:scale-[1.02] text-sm inline-flex items-center gap-2"
             >
               Join Talent Network
